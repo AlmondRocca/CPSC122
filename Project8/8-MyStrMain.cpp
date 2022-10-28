@@ -41,7 +41,7 @@ int main(int argc, char* argv[])
  cout << "*****Test myStrcpy*****" << endl;
  cout << "static test" << endl;
  char const* test = "replaced?";
- str1.myDisplay();
+ str1.myDisplay();         
  str1.myStrcpy(test);
  str1.myDisplay();
  //End Test of myStrcpy
@@ -55,6 +55,27 @@ int main(int argc, char* argv[])
  cout << str2->myStrlen() << endl;
  cout << endl;
  //End Test of myStrlen
+*/
+
+/*
+ //Test of find and isSub since they work together.
+ cout << "*****Test find and isSub*****" << endl;
+ cout << "static test" << endl;
+ cout << "output should be the starting position of the substring" << endl;
+ cout << "finding 'low' in 'swallow' should return 4" << endl;
+ cout << str1.find("low") << endl;
+ //End Test of find and isSub
+*/
+
+/*
+ //Test of concat
+ cout << "*****Test concat*****" << endl;
+ cout << "dynamic test" << endl;
+ cout << "output should be command input and whatever is in here" << endl;
+ str2->myDisplay();
+ str2->concat("added on");
+ str2->myDisplay();
+ //End Test of concat
 */
 
  delete str2;

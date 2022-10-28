@@ -1,10 +1,15 @@
+/*
+Name: Kevin Rocca
+Class: CPSC 122, Project 8
+10/27/22
+This progam is an implementation of the functions in 8-MyStr.h
+*/
 #include <iostream>
 using namespace std;
 
 #include "8-MyStr.h"
 #include <cstring>
 
-//Constructor
 MyString::MyString(char const* strIn)
 {
  length = strlen(strIn);  //strlen function
@@ -13,8 +18,6 @@ MyString::MyString(char const* strIn)
 
 }
 
-//Destructor function
-//once you get the constructor working, remove the comments.
 MyString::~MyString()
 {
  delete []str; 
@@ -38,16 +41,19 @@ int MyString::myStrlen()
  return myStrLen(str);
 }
 
-//figure out what i need to do here
+
 void MyString::myStrcpy(char const* strIn){
     int idx = 0;
     while(strIn[idx] != '\0'){
         str[idx] = strIn[idx];
         idx++;
     }
+    for(int i = idx; i < length; i++){
+        str[i] = '\0';
+    }
 }
 
-//isEqual ready to be tested
+
 bool MyString::isEqual(char const* strIn){
     int idx = 0;
     while(strIn[idx] != '\0'){
@@ -59,6 +65,44 @@ bool MyString::isEqual(char const* strIn){
     return true;
 }
 
+
 int MyString::find(char const* strIn){
-    
+    int returnPos = -1;
+    int idx = 0;
+
+    while(idx < length){
+        if(strIn[0] == str[idx]){
+            if(isSub(strIn, idx)){
+                returnPos = idx;
+                break;
+            }
+        }
+        idx++;
+    }
+    return returnPos;
+}
+
+
+bool MyString::isSub(char const* strIn, int idx){
+    int cur = 0;
+    for(int i = idx; i < length; i++){
+        if(strIn[cur] == '\0'){
+            break;
+        }
+        if(!(strIn[cur] == str[i])){
+            return false;
+        }
+        cur++;
+    }
+    return true;
+}
+
+
+void MyString::concat(char const* strIn){
+    int idx = 0;
+    while(strIn[idx] != '\0'){
+        str[length + idx] = strIn[idx];
+        idx++;
+    }
+    str[length + idx + 1] = '\0';
 }
