@@ -32,7 +32,12 @@ int main(int argc, char* argv[])
  cout << "static test" << endl;
  char const* test = "hi there";
  bool test2 = str1.isEqual(test);
- cout << test2 << endl;
+ if(test2 == 0){
+  cout << "false" << endl;
+ }
+ else{
+    cout << "true" << endl;
+ }
  //End Test of isEqual
 */
 
@@ -40,6 +45,7 @@ int main(int argc, char* argv[])
  //Test of myStrcpy
  cout << "*****Test myStrcpy*****" << endl;
  cout << "static test" << endl;
+ cout << "output should be whatever is in test below" << endl;
  char const* test = "replaced?";
  str1.myDisplay();         
  str1.myStrcpy(test);
@@ -67,7 +73,7 @@ int main(int argc, char* argv[])
  //End Test of find and isSub
 */
 
-/*
+
  //Test of concat
  cout << "*****Test concat*****" << endl;
  cout << "dynamic test" << endl;
@@ -76,7 +82,7 @@ int main(int argc, char* argv[])
  str2->concat("added on");
  str2->myDisplay();
  //End Test of concat
-*/
+
 
  delete str2;
  return 0;  

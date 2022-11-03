@@ -43,24 +43,29 @@ int MyString::myStrlen()
 
 
 void MyString::myStrcpy(char const* strIn){
-    int idx = 0;
-    while(strIn[idx] != '\0'){
-        str[idx] = strIn[idx];
-        idx++;
-    }
-    for(int i = idx; i < length; i++){
-        str[i] = '\0';
+    int newLength = myStrLen(strIn);
+    delete []str;
+
+    length = newLength;
+    str = new char[length];
+
+    for(int i = 0; i < length; i++){
+        str[i] = strIn[i];
     }
 }
 
 
 bool MyString::isEqual(char const* strIn){
     int idx = 0;
-    while(strIn[idx] != '\0'){
+    while(strIn[idx] != '\0')
+    {
         if(strIn[idx] != str[idx]){
             return false;
         }
         idx++;
+    }
+    if(idx != length){
+        return false;
     }
     return true;
 }
@@ -100,9 +105,20 @@ bool MyString::isSub(char const* strIn, int idx){
 
 void MyString::concat(char const* strIn){
     int idx = 0;
-    while(strIn[idx] != '\0'){
-        str[length + idx] = strIn[idx];
+    int newLength = length + myStrLen(strIn);
+    char* temp = new char[newLength + 1];
+    length = newLength;
+
+    while(str[idx] != '\0'){
+        temp[idx] = str[idx];
         idx++;
     }
-    str[length + idx + 1] = '\0';
-}
+    delete []str;
+    int i = 0;
+    while(strIn[i] != '\0'){
+        temp[idx] = strIn[i];
+        idx++;
+        i++;
+    }
+    str = temp;
+    }
