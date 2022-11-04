@@ -73,7 +73,7 @@ int main(int argc, char* argv[])
  //End Test of find and isSub
 */
 
-
+/*
  //Test of concat
  cout << "*****Test concat*****" << endl;
  cout << "dynamic test" << endl;
@@ -82,7 +82,7 @@ int main(int argc, char* argv[])
  str2->concat("added on");
  str2->myDisplay();
  //End Test of concat
-
+*/
 
  delete str2;
  return 0;  

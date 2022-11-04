@@ -106,19 +106,19 @@ bool MyString::isSub(char const* strIn, int idx){
 void MyString::concat(char const* strIn){
     int idx = 0;
     int newLength = length + myStrLen(strIn);
-    char* temp = new char[newLength + 1];
+    char* newStr = new char[newLength + 1];
     length = newLength;
 
     while(str[idx] != '\0'){
-        temp[idx] = str[idx];
+        newStr[idx] = str[idx];
         idx++;
     }
     delete []str;
     int i = 0;
     while(strIn[i] != '\0'){
-        temp[idx] = strIn[i];
+        newStr[idx] = strIn[i];
         idx++;
         i++;
     }
-    str = temp;
+    str = newStr;
     }
