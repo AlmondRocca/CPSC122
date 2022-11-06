@@ -9,6 +9,7 @@ List::List()
  head = NULL;
 }
 
+
 List::~List(){
     for(int i = 0; i < length; i++){
         List::DeleteItemH();
@@ -17,7 +18,7 @@ List::~List(){
     length = 0;
 }
 
-//Tested, works
+
 void List::PutItemH(const itemType itemIn){
     node* temp = new node;
     temp->item = itemIn;
@@ -27,12 +28,12 @@ void List::PutItemH(const itemType itemIn){
     temp = NULL;
 }
 
-//no way i did this wrong
+
 itemType List::GetItemH() const{
     return head->item;
 }
 
-//untested
+
 void List::DeleteItemH(){
     node* temp = head;
     head = head->next;
@@ -41,7 +42,7 @@ void List::DeleteItemH(){
     length--;
 }
 
-//untested
+
 bool List::IsEmpty() const{
     if(head == NULL){
         return true;
@@ -49,85 +50,94 @@ bool List::IsEmpty() const{
     return false;
 }
 
-//No way I could mess this up
+
 int List::GetLength() const{
     return length;
 }
 
-//Tested, works but idk if im couting it right
+
 void List::Print() const{
     node* traverse = head;
-    for(int i = 0; i < length; i++){
+    while(traverse->next != NULL)
+    {
         cout << traverse->item << " ";
         traverse = traverse->next;
     }
-    cout << endl;
+    cout << traverse->item << endl;
     traverse = NULL;
 }
 
-//Tested, works
+
 int List::Find(const itemType target) const{
     node* traverse = head;
     int foundCount = 0;
-    for(int i = 0; i < length; i++){
-        if(traverse->item == target){
+    while(traverse->next != NULL)
+    {
+        if(traverse->item == target)
+        {
             foundCount++;
         }
         traverse = traverse->next;
+    }
+    //Similar issue to DeleteItem loop. It skips the last item 
+    //Due to traverse->next equaling NULL before everything can be checked.
+    //if statement fixes this
+    if(traverse->item == target)
+    {
+        foundCount++;
     }
     traverse = NULL;
     return foundCount;
 }
 
-//untested
-//what if we keep deleting thing past head
-//somethings fucked
+
 int List::DeleteItem(const itemType target){
-    node* lagTraverse = head;
-    node* leadTraverse = head->next;
-    node* temp;
+    node* cur = head;
     int delCount = 0;
-    for(int i = 0; i < length - 1; i++)
+    while(cur->next != NULL)
     {
-        //case deleting inbetween head and tail
-        if((leadTraverse->item == target) && (leadTraverse->next != NULL))
-        {
-            temp = leadTraverse;
-            leadTraverse = leadTraverse->next;
-            delete temp;
-            temp = NULL;
-            lagTraverse->next = leadTraverse;
-            length--;
-            delCount++;
-        }
-        //case deleting the tail
-        else if((leadTraverse->item == target) && (leadTraverse->next == NULL))
-        {
-            delete leadTraverse;
-            leadTraverse = NULL;
-            lagTraverse-> next = NULL;
-            delCount++;
-            length--;
-        }
-        //case deleting the head
-        else if(lagTraverse->item == target)
+        //delete head nodes
+        if(head->item == target)
         {
             DeleteItemH();
+            cur = head;
+            delCount++;
+        }
+        //delete middle nodes
+        else if((cur->next->item == target) && (cur->next->next != NULL)){
+            node* temp = cur->next;
+            cur->next = temp->next;
+            delete temp;
+            temp = NULL;
             delCount++;
             length--;
-            lagTraverse = leadTraverse;
-            leadTraverse = leadTraverse->next;
         }
-        //traverse the list
+        //delete tail node
+        else if((cur->next->item == target) && (cur->next->next == NULL))
+        {
+            delete cur->next;
+            cur->next = NULL;
+            delCount++;
+            length--;
+        }
         else
         {
-            lagTraverse = leadTraverse;
-            leadTraverse = leadTraverse->next;
+            cur = cur->next;
         }
-        
     }
-    lagTraverse = NULL;
-    leadTraverse = NULL;
-    temp = NULL;
+    /*
+    This deletes the head node in a case where the list is filled
+    with only the target value. My code would keep calling the head
+    node case which would set cur to point to the last node. This is
+    would make cur->next = NULL which would prematurely exit the while
+    loop. I tried to come with elegant ways to fix this but I couldn't.
+    This extra if statement fixes that special case.
+    */
+    if(head->item == target)
+    {
+        DeleteItemH();
+        delCount++;
+    }
+    cur = NULL;
     return delCount;
 }
