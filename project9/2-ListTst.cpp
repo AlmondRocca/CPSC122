@@ -1,3 +1,10 @@
+/*
+Name: Kevin Rocca
+Class: CPSC 122
+Date Submitted: 11/13/22
+Assignment: Project 9 
+Description: This file is a tester for all the functions in 2-list.cpp
+*/
 #include <iostream>
 using namespace std;
 

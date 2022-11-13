@@ -1,9 +1,9 @@
 /*
-Name: Paul De Palma
-Class: CPSC 122, Section 1
-Date Submitted: March 15, 2022
-Assignment: N/A 
-Description: Program illustrates a simple linked list  
+Name: Kevin Rocca
+Class: CPSC 122
+Date Submitted: 11/13/22
+Assignment: Project 9 
+Description: Program illustrates a simple linked list
 */
 
 #ifndef LIST_H

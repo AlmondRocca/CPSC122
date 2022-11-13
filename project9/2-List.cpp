@@ -1,3 +1,10 @@
+/*
+Name: Kevin Rocca
+Class: CPSC 122
+Date Submitted: 11/13/22
+Assignment: Project 9 
+Description: Program implements the linked list functions in 2-List.h
+*/
 #include <iostream>
 using namespace std;
 
