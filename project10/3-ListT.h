@@ -1,8 +1,8 @@
 /*
-Name: Paul De Palma
+Name: Kevin Rocca
 Class: CPSC 122, Section 1
-Date Submitted: March, 2022
-Assignment: N/A 
+Date Submitted: 11/13/22
+Assignment: Project 10
 Description: Program illustrates a linked list both head and tail pointers 
 */
 

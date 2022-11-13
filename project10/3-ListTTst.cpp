@@ -1,3 +1,11 @@
+/*
+Name: Kevin Rocca
+Class: CPSC 122, Section 1
+Date Submitted: 11/13/22
+Assignment: Project 10
+Description: Program tests a linked list both head and tail pointers 
+*/
+
 #include <iostream>
 using namespace std;
 
@@ -98,6 +106,7 @@ int main()
  lst2->PutItemH(4);
  lst2->PutItemH(1);
  cout << lst2->DeleteItem(4) << endl;
+ delete lst2;
 */
  delete lst1;
  cout << endl;

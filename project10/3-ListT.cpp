@@ -1,3 +1,11 @@
+/*
+Name: Kevin Rocca
+Class: CPSC 122, Section 1
+Date Submitted: 11/13/22
+Assignment: Project 10
+Description: Program implements a linked list both head and tail pointers
+*/
+
 #include <iostream>
 using namespace std;
 
