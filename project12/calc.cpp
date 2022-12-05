@@ -1,3 +1,12 @@
+/*
+Name: Kevin Rocca
+Class: CPSC 122, Project 12
+12/5/22
+This program is the framework for a calculator.
+As of right now it doesnt do anything. It will replace a parenthesized
+expression like ((15*3)+12) and turn it into ((A+B)*C). Then it stores
+the numbers into a value table.
+*/
 #include <iostream>
 using namespace std;
 
