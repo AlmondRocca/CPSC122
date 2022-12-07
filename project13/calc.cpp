@@ -76,7 +76,7 @@ void Calc::MakeValueTbl() //works
 
 void Calc::Parse()
 {
-    int lastNumInSequence = 0; //give this a better name later
+    int lastNumInSequence = 0;
     string num = "";
     string processedInFix = ""; //I could use an array but I already wrote it like this 
 
@@ -190,6 +190,7 @@ void Calc::copyStrToInFix(string s)
         inFix[i] = s[i];
         i++;
     }
+    inFix[i] = '\0';
 }
 
 void Calc::InFixToPostFix()
